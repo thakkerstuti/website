@@ -38,7 +38,7 @@ Here is the architecture when Kyverno-Envoy-Plugin deployed as a separate pod to
 
 Performing policy evaluations locally with Envoy is advantageous, as it eliminates the need for an additional network hop for authorization checks, thus enhancing both performance and availability.
 
-The Kyverno-Envoy-Plugin can be deployed with Envoy-based sevice meshes such as [Istio](https://istio.io/), [Gloo](https://gloo.solo.io/), [Kuma](https://kuma.io/) etc.
+The Kyverno-Envoy-Plugin can be deployed with Envoy-based service meshes such as [Istio](https://istio.io/), [Gloo](https://gloo.solo.io/), [Kuma](https://kuma.io/) etc.
 
 ## Getting started
 
@@ -62,11 +62,11 @@ Install application with Envoy and Kyverno-Envoy-Plugin as a sidecar container.
 $ kubectl apply -f https://raw.githubusercontent.com/kyverno/kyverno-envoy-plugin/main/quick_start.yaml
 ```
 
-The `applicaition.yaml` manifest defines the following resource:
+The `application.yaml` manifest defines the following resource:
 
 - The Deployment includes an example Go application that provides information of books in the library books collection and exposes APIs to `get`, `create` and `delete` books collection. Check this out for more information about the [Go test application](https://github.com/Sanskarzz/kyverno-envoy-demos/tree/main/test-application) .
 
-- The Deployment also includes a Kyverno-Envoy-Plugin sidecar container in addition to the Envoy sidecar container. When Envoy recevies API request destined for the Go test applicaiton, it will check with Kyverno-Envoy-Plugin to decide if the request should be allowed and the Kyverno-Envoy-Plugin sidecar container is configured to query Kyverno-JSON engine for policy decisions on incoming requests.
+- The Deployment also includes a Kyverno-Envoy-Plugin sidecar container in addition to the Envoy sidecar container. When Envoy receives API request destined for the Go test application, it will check with Kyverno-Envoy-Plugin to decide if the request should be allowed and the Kyverno-Envoy-Plugin sidecar container is configured to query Kyverno-JSON engine for policy decisions on incoming requests.
 
 - A ConfigMap `policy-config` is used to pass the policy to Kyverno-Envoy-Plugin sidecar in the namespace `default` where the application is deployed .
 
